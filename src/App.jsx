@@ -8,6 +8,11 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [tours, setTours] = useState([]);
 
+  const removeTour = (id) => {
+    const newTours = tours.filter((tour) => tour.id !== id);
+    setTours(newTours);
+  };
+
   useEffect(() => {
     const fetchTours = async () => {
       setIsLoading(true);
@@ -34,10 +39,10 @@ const App = () => {
       </main>
     );
   }
-  // TO DO:Refresh button
+
   return (
     <main>
-      <Tours tours={tours} />
+      <Tours tours={tours} removeTour={removeTour} />
     </main>
   );
 };
